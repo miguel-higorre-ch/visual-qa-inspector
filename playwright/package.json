@@ -1,0 +1,30 @@
+{
+  "name": "visual-qa-inspector-playwright",
+  "version": "1.0.0",
+  "description": "Playwright screenshot capture module for VisualQA Inspector",
+  "main": "capture.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "capture": "node capture.js",
+    "capture:baseline": "node capture.js --mode regression --target baseline",
+    "capture:current": "node capture.js --mode regression --target current",
+    "install:browsers": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.600.0",
+    "@playwright/test": "1.44.1",
+    "commander": "12.1.0",
+    "dotenv": "16.4.5",
+    "uuid": "9.0.1"
+  },
+  "keywords": [
+    "playwright",
+    "screenshot",
+    "visual-testing",
+    "s3",
+    "qa"
+  ],
+  "license": "MIT"
+}
