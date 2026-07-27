@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Environment files with secrets
+.env
+*.env.local
+
+# Build output
+dist/
+build/
+lambda.zip
+
+# Terraform state and local files
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+terraform.tfvars
+
+# Screenshots (generated locally, uploaded to S3)
+playwright/screenshots/
+playwright/source-code/
+
+# Session backups
+session-*.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Package lock files (optional — keep if you want reproducible installs)
+# Uncomment the next line if you prefer not to track lock files
+# package-lock.json
