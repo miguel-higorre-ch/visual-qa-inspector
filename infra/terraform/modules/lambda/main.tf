@@ -85,7 +85,7 @@ resource "aws_iam_role_policy" "bedrock_access" {
         Effect = "Allow"
         Action = ["bedrock:InvokeModel"]
         Resource = [
-          "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0"
+          "arn:aws:bedrock:us-east-1::foundation-model/anthropic.*"
         ]
       }
     ]
@@ -164,7 +164,7 @@ resource "aws_lambda_function" "main" {
     variables = {
       S3_BUCKET_NAME     = var.s3_bucket_name
       DYNAMODB_TABLE_NAME = var.dynamodb_table_name
-      BEDROCK_MODEL_ID   = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+      BEDROCK_MODEL_ID   = "anthropic.claude-sonnet-4-5"
       AWS_REGION_NAME    = var.aws_region
     }
   }
