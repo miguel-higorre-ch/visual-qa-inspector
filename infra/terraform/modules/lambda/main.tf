@@ -48,14 +48,16 @@ resource "aws_iam_role_policy" "s3_access" {
     Version = "2012-10-17"
     Statement = [
       {
+        Sid    = "S3BucketList"
+        Effect = "Allow"
+        Action = ["s3:ListBucket"]
+        Resource = [var.s3_bucket_arn]
+      },
+      {
         Sid    = "S3GetObjects"
         Effect = "Allow"
         Action = ["s3:GetObject"]
-        Resource = [
-          "${var.s3_bucket_arn}/baseline/*",
-          "${var.s3_bucket_arn}/current/*",
-          "${var.s3_bucket_arn}/source-code/*"
-        ]
+        Resource = ["${var.s3_bucket_arn}/*"]
       },
       {
         Sid    = "S3PutObjects"

@@ -283,13 +283,20 @@ resource "aws_api_gateway_stage" "prod" {
   deployment_id = aws_api_gateway_deployment.main.id
   stage_name    = "prod"
 
-  default_route_settings {
-    throttling_rate_limit  = 10
-    throttling_burst_limit = 20
-  }
-
   tags = {
     Name = "${local.api_name}-prod"
+  }
+}
+
+# Throttling is set at the method level for REST APIs (not stage-level default_route_settings)
+resource "aws_api_gateway_method_settings" "throttle" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  stage_name  = aws_api_gateway_stage.prod.stage_name
+  method_path = "*/*"
+
+  settings {
+    throttling_rate_limit  = 10
+    throttling_burst_limit = 20
   }
 }
 
